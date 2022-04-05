@@ -47,7 +47,7 @@ spec:
   hosts:
     - "mci-test.preprod.n.svc.tv.telus.net"
   gateways:
-    - "gateway-public"
+    - "gateway-telus"
   http:
   - route:
     - destination:
