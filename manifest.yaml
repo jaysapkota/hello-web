@@ -38,17 +38,18 @@ spec:
   - port: 80
     targetPort: 80
 ---
-apiVersion: networking.gke.io/v1
-kind: MultiClusterService
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
 metadata:
-  name: whereami-mcs
+  name: whereami
 spec:
-  template:
-    spec:
-      selector:
-        app: whereami
-      ports:
-      - name: web
-        protocol: TCP
-        port: 8080
-        targetPort: 80
+  hosts:
+    - "mci-test.pre-prod.n.svc.tv.telus.net"
+  gateways:
+    - "gateway-public"
+  http:
+  - route:
+    - destination:
+        host: whereami
+        port:
+          number: 80
