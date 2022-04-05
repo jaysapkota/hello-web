@@ -44,7 +44,7 @@ metadata:
   name: whereami
 spec:
   hosts:
-    - "mci-test.pre-prod.n.svc.tv.telus.net"
+    - "mci-test.preprod.n.svc.tv.telus.net"
   gateways:
     - "gateway-public"
   http:
