@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whereami
+  name: nginx
   labels:
-    app: whereami
+    app: nginx
 spec:
   replicas: 1
   selector:
@@ -15,8 +15,8 @@ spec:
         app: whereami
     spec:
       containers:
-      - name: whereami
-        image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.7
+      - name: nginx
+        image: nginx: latest
         ports:
         - containerPort: 80
         resources:
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: whereami
+  name: nginx
 spec:
   selector:
-    app: whereami
+    app: nginx
   ports:
   - name: http
     port: 80
@@ -42,7 +42,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: whereami
+  name: nginx
 spec:
   hosts:
     - "mci-test.preprod.n.svc.tv.telus.net"
@@ -51,6 +51,6 @@ spec:
   http:
   - route:
     - destination:
-        host: whereami
+        host: nginx
         port:
           number: 80
