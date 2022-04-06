@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.8
         ports:
         - containerPort: 80
         resources:
