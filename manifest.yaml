@@ -39,3 +39,19 @@ spec:
     port: 80
     targetPort: 8080
 
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: whereami
+spec:
+  hosts:
+    - "mci-test.preprod.n.svc.tv.telus.net"
+  gateways:
+    - "gateway-public"
+  http:
+  - route:
+    - destination:
+        host: whereami
+        port:
+          number: 80
